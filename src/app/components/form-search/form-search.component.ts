@@ -15,12 +15,14 @@ export class FormSearchComponent implements OnInit {
   }
 
   onSearch(value: string){
-    if(value && value.length >= 3){
 
-      this.router.navigateByUrl('/character-list', {
-        queryParams: {q: value}
-      })
+      this.router.navigate([''], {
+        queryParams: {q: value},
+        
+      });  
+  }
 
-    }
+  search(): void{
+    window.location.reload();
   }
 }

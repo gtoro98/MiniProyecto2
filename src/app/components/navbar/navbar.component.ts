@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'firebase';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated = false;
+  user: User = null;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+
   }
 
+  getCurrentUser(): void{
+    this.authService.getCurrentUser().subscribe(response => {
+      if(response){
+        this.isAuthenticated = true;
+        this.user = response;
+        return;
+      }
+      this.isAuthenticated = false;
+      this.user = null;
+    });
+  }
+
+  logInWithGoogle(): void {
+    this.authService.loginWithGoogle().then((response) => { 
+     
+  })
+}
 }
