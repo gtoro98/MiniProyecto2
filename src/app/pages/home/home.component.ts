@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'firebase';
+import { FavCharacters } from 'src/app/models/fav-characters';
+import { AuthService } from 'src/app/services/auth.service';
+import { FavService } from 'src/app/services/fav.service';
 
 
 
@@ -9,9 +13,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated = false;
+  user: User = null;
+
+  constructor(
+    private authService: AuthService,
+    private favService: FavService,
+    ) { }
 
   ngOnInit(): void {
+    this.getCurrentUser();
+  }
+  getCurrentUser(): void{
+    this.authService.getCurrentUser().subscribe(response => {
+      if(response){
+        this.isAuthenticated = true;
+        this.user = response;
+       
+        return;
+      }
+      this.isAuthenticated = false;
+      this.user = null;
+    });
   }
 
 }

@@ -8,7 +8,7 @@
           <a class="nav-link" [routerLink] ="['/']" routerLinkActive = "link-active">Characters<span class="sr-only"></span></a>
         </li>
         <li class="nav-item active" *ngIf = "isAuthenticated">
-            <a class="nav-link" href="#">FavCharacters<span class="sr-only"></span></a>
+            <a class="nav-link" [routerLink]="['/favCharacters', user.displayName]">FavCharacters<span class="sr-only"></span></a>
         </li>
        
       </ul>

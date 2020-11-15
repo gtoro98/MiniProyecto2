@@ -21,6 +21,8 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
 import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 import { CharacterComponent } from './components/character/character.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FavCharactersComponent } from './pages/fav-characters/fav-characters.component';
+
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     FormSearchComponent,
     CharacterDetailsComponent,
     CharacterComponent,
+    FavCharactersComponent,
+  
 
     
   ],

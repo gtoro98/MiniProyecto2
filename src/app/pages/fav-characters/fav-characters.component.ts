@@ -1,24 +1,19 @@
-import { Component, HostListener, Inject, Input, OnInit, Query } from '@angular/core';
-
-import { Character } from 'src/app/models/character'
-import { CharacterService } from 'src/app/services/character.service'
-
-import { DOCUMENT } from '@angular/common'
-import { take } from 'rxjs/operators'
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { from } from 'rxjs';
-import { User } from 'firebase';
+import { Character } from 'src/app/models/character';
+import { CharacterService } from 'src/app/services/character.service';
 
 type RequestInfo = {
   next: string;
 };
 
 @Component({
-  selector: 'app-character-list',
-  templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.scss']
+  selector: 'app-fav-characters',
+  templateUrl: './fav-characters.component.html',
+  styleUrls: ['./fav-characters.component.scss']
 })
-export class CharacterListComponent implements OnInit {
+export class FavCharactersComponent implements OnInit {
 
   characters: Character[] = [];
   info: RequestInfo = {
@@ -34,7 +29,8 @@ export class CharacterListComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private characterService: CharacterService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.getCharactersByQuery();
@@ -42,7 +38,6 @@ export class CharacterListComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   @Input() isAuthenticated = false;
-  @Input() user: User = null;
 
   onWindowScroll(): void{
     const yOffset = window.pageYOffset;
@@ -95,8 +90,5 @@ export class CharacterListComponent implements OnInit {
       } 
     })
   }
-
-
-
 
 }

@@ -14,8 +14,8 @@
             <small class = "text-muted">{{character.created | date}}</small>
         </div>
     </div>
-    <button >
-        {{isAuthenticated}}
+    <button (click) = "addFav(character.id)"*ngIf = "isAuthenticated">
+       
         <input type="checkbox" checked autocomplete="off">
     </button>
     
