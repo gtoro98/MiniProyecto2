@@ -40,11 +40,11 @@ export class CharacterComponent implements OnInit {
   addFav(favId: number){
 
     this.favService.getFavCharacters(this.user.displayName).subscribe((item) => {
-      const favCharacters2: FavCharacters = item.payload.data('userId')
+     
        
       
       
-      console.log("Item Payload:",favCharacters2)
+ 
       
       
         
