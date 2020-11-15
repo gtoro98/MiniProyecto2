@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-
+    this.getCurrentUser();
   }
 
   getCurrentUser(): void{
@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
       if(response){
         this.isAuthenticated = true;
         this.user = response;
+       
         return;
       }
       this.isAuthenticated = false;
@@ -32,7 +33,7 @@ export class NavbarComponent implements OnInit {
 
   logInWithGoogle(): void {
     this.authService.loginWithGoogle().then((response) => { 
-     
+    
   })
 }
 }

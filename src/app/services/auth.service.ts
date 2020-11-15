@@ -18,7 +18,6 @@ export class AuthService {
 
   isAuthenticated(): boolean{
     const user: User = JSON.parse(localStorage.getItem('user'))?? null
-
     return user !== null;
   }
   private authLogIn(provider: auth.AuthProvider): Promise<auth.UserCredential>{

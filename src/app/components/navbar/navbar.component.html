@@ -7,7 +7,7 @@
         <li class="nav-item active">
           <a class="nav-link" [routerLink] ="['/']" routerLinkActive = "link-active">Characters<span class="sr-only"></span></a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item active" *ngIf = "isAuthenticated">
             <a class="nav-link" href="#">FavCharacters<span class="sr-only"></span></a>
         </li>
        
@@ -16,9 +16,12 @@
         <app-form-search></app-form-search>
       </div>
       
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item active">
+      <ul class="navbar-nav navbar-right" >
+        <li class="nav-item active" *ngIf = "!isAuthenticated">
             <button class="btn btn-success" (click) = "logInWithGoogle()">GoogleLogIn<span class="sr-only"></span></button>
+        </li>
+        <li class="nav-item active" *ngIf = "isAuthenticated">
+          <h2>{{user.displayName}}</h2>
         </li>
       </ul>
       
